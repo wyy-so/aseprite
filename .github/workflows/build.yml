@@ -13,24 +13,24 @@ jobs:
 
       - name: Setup MSVC  
         uses: ilammy/msvc-dev-cmd@v1  
-
+        
       - name: Install Dependencies  
         run: |  
-          # Placeholder for dependencies, modify as per actual needs.  
-          echo "Installing dependencies..."  
+          Write-Host "Installing dependencies..."  
+          # 如果需要，添加实际的依赖项  
 
       - name: Generating Makefiles  
         run: |  
-          echo "Generating Makefiles..."  
+          Write-Host "Generating Makefiles..."  
           curl -L https://github.com/blueloveTH/aseprite/releases/download/v0.01/skia.zip --output skia.zip  
           7z x skia.zip  
-          cmake -S . -B build -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DENABLE_UI=on \
-            -DENABLE_CCACHE=off \
-            -DLAF_BACKEND=skia \
-            -DSKIA_DIR=./skia \
-            -DSKIA_LIBRARY_DIR=./skia/out/Release-x64 \
+          cmake -S . -B build -G Ninja `  
+            -DCMAKE_BUILD_TYPE=Release `  
+            -DENABLE_UI=on `  
+            -DENABLE_CCACHE=off `  
+            -DLAF_BACKEND=skia `  
+            -DSKIA_DIR=./skia `  
+            -DSKIA_LIBRARY_DIR=./skia/out/Release-x64 `  
             -DSKIA_LIBRARY=./skia/out/Release-x64/skia.lib  
 
       - name: Compiling  
